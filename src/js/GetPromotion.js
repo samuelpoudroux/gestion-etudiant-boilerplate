@@ -6,8 +6,6 @@ var btnstudentscreen = document.querySelector('.Btnstudentscreen')
 
 btnstudentscreen.addEventListener("click", studentscreen)
 
-
-
 // this function getback the promotionlist and screen them in html
 function getPromotion() {
     // I retreive the list promotion by a fetch method
@@ -27,48 +25,46 @@ function getPromotion() {
                 // now I state a value = promotion['@id'] in order to select the right idpromotion into the select to carry out some opération 
                 myOption.value = promotion["@id"]
                 mySelect.appendChild(myOption);
-                btnstudentscreen.id= mySelect.value
-
-            
-
             })
 
             console.log(promotionresponse['hydra:member'])
 
-            console.log(promotionresponse)
+            console.log(promotionlist)
         })
 }
 
-
-
-function getstudents(){
+function getstudents() {
 
     fetch("http://api-students.popschool-lens.fr/api/students")
-    // we get back the responson within json format
-    .then(response => response.json())
-    // I name the response promotionresponse
-    .then(studentsresponse => {
-        var studentinfos = studentsresponse['hydra:member']
-        studentlist= studentinfos;
-        console.log(studentsresponse)
-        console.log(studentlist)
+        // we get back the responson within json format
+        .then(response => response.json())
+        // I name the response promotionresponse
+        .then(studentsresponse => {
+            var studentinfos = studentsresponse['hydra:member']
+            studentlist = studentinfos;
+            console.log(studentsresponse)
+            console.log(studentlist)
+        })
+
+}
+
+// this function is going to screen the student related to the promotion selected
+function studentscreen(event) {
+
+    // its always the same i GIVE A ID to my button that is equal to mySelect.value in order to link my event with the nameselected
+    btnstudentscreen.id = mySelect.value
+    var screenstudent = event.target
+
+    studentlist.forEach(student => {
+        if (student.promotion == screenstudent.id) {
+            console.log(student.firstname)
+        }
+
     })
 
-}
 
-function studentscreen(event){
-var screenstudent = event.target
-
-studentlist.forEach(student=>{
-    console.log(student.firstname)
-    if( student["@id"] === screenstudent.id ){
-                console.log("helloworld")
-}
-
-})
-
-    
 }
 
 export default getPromotion;
-export {getstudents}
+export {getstudents
+}
