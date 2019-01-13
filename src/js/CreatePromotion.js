@@ -4,6 +4,7 @@ var newPromotion = document.querySelector('#NewPromo');
 var startdate = document.querySelector('#StartDate');
 var enddate = document.querySelector('#EndDate');
 
+// the function only create promotion
 function createPromotion() {
     fetch("http://api-students.popschool-lens.fr/api/promotions", {
             headers: {
@@ -11,7 +12,7 @@ function createPromotion() {
                 'Content-Type': 'application/json'
             },
             method: "POST",
-            // on transforme la valeur du champs input newPromo en chaine Json via stringify
+            // we tranform the inputs value int the json string by using function stringyfy
             body: JSON.stringify({
                 name: newPromotion.value,
                 startDate: startdate.value,

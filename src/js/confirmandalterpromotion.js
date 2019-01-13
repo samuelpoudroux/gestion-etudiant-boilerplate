@@ -4,8 +4,7 @@ import getPromotion from './GetPromotion.js'
 var mySelect = document.querySelector('#listpromotion')
 var divinputalter = document.querySelector('#inputalter')
 
-
-
+// this function will ask to confirm if we want to alter the promotion and if there would be ok Call the function alterpromotion taht is goig to modiy the promotion
 function confirmalterpromotion(event) {
 
     if (confirm("modifier la promotion : " + mySelect.value + " ?")) {
@@ -19,7 +18,8 @@ function confirmalterpromotion(event) {
         alternamepromotion.placeholder = 'nouveau nom de la promotion'
         alterstartdate.type = 'date';
         alterenddate.type = 'date';
-        btnalterpromotion.id = select.value
+        // I attribute a value to my button that the event is going to take place in order to link my event with the promotion.id to use it later in the function alterpromotion when i define a varpromotion as event.target
+        btnalterpromotion.id = mySelect.value
         divinputalter.appendChild(alternamepromotion);
         divinputalter.appendChild(alterstartdate);
         divinputalter.appendChild(alterenddate);
@@ -51,15 +51,15 @@ function alterpromotion(event) {
                 name: alternamepromotion.value,
                 startDate: alterstartdate.value,
                 endDate: alterenddate.value,
-                students: []
             })
         })
         .then(response => response.json())
         .then(promotionresponse => {
+            console.log(promotionresponse + " modifié")
             // I call back the function get promo to refresh my list
             getPromotion();
             //  Now I screen promotionresponse.name in console log to check if the resposnse and my method has been done corretly
-            console.log(promotionresponse.name + " modifié")
+         
         })
 }
 

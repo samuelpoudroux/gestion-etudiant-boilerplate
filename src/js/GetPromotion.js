@@ -2,6 +2,7 @@ var promotionlist = [];
 var mySelect = document.querySelector('#listpromotion');
 var load = document.querySelector("#load");
 
+// this function getback the promotionlist and screen them in html
 function getPromotion() {
     // I retreive the list promotion by a fetch method
 
@@ -21,8 +22,12 @@ function getPromotion() {
                 myOption.value = promotion.id
                 mySelect.appendChild(myOption);
             })
-        })
 
+console.log(promotionresponse['hydra:member'])
+
+console.log(promotionresponse)
+        })
+        console.log(promotionlist)
 }
 
 export default getPromotion

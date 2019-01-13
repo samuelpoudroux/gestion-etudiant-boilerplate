@@ -24,7 +24,7 @@ function deletePromotion(promotionid)
             .then(function (response) {    
                 // we call back the function getpromo to refresh our list            
                 getPromotion();
-                console.log ("supprimé")
+                console.log (response)
             });
 }
 
