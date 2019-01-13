@@ -1,7 +1,7 @@
 import getPromotion from './GetPromotion.js'
 
 // I need to state again the var my select because lets remember when we set a value = promotion.id  to each option of the select into the promotionget function because we would need the value to make some operation later. Now here we are.
-var mySelect = document.querySelector('#listpromotion')
+var mySelect = document.querySelector('.listpromotion')
 var divinputalter = document.querySelector('#inputalter')
 
 // this function will ask to confirm if we want to alter the promotion and if there would be ok Call the function alterpromotion taht is goig to modiy the promotion
@@ -40,7 +40,7 @@ function alterpromotion(event) {
     var promotion = event.target
 
 
-    fetch("http://api-students.popschool-lens.fr/api/promotions/" + promotion.id, {
+    fetch("http://api-students.popschool-lens.fr" + promotion.id, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

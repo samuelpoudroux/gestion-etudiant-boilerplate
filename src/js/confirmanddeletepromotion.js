@@ -1,7 +1,7 @@
 import getPromotion from './GetPromotion.js'
 
 // I need to state again the var my select because lets remember when we set a value = promotion.id  to each option of the select into the promotionget function because we would need the value to make some operation later. Now here we are.
-var mySelect = document.querySelector('#listpromotion'); 
+var mySelect = document.querySelector('.listpromotion'); 
 
 // Now I m create a function that is going to ask to confirm the removal and call the function delete if that approuved
  function confirmdeletePromotion(event){
@@ -18,7 +18,7 @@ var mySelect = document.querySelector('#listpromotion');
 
 function deletePromotion(promotionid) 
 {
-        fetch("http://api-students.popschool-lens.fr/api/promotions/" + promotionid, {
+        fetch("http://api-students.popschool-lens.fr" + promotionid, {
             method: "DELETE"
         })
             .then(function (response) {    
