@@ -3,6 +3,7 @@ import getPromotion from './GetPromotion.js'
 import createPromotion from './CreatePromotion.js'
 import confirmdeletePromotion from './confirmanddeletepromotion.js'
 import confirmalterpromotion from './confirmandalterpromotion.js'
+import getstudents from './getstudents.js'
 
 // I build an array to stock my jsondata of promotion
 
@@ -18,3 +19,4 @@ btnalterPromo.addEventListener('click', confirmalterpromotion )
 
 // I call the function get promotion
 getPromotion();
+getstudents()

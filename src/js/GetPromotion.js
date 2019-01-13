@@ -2,6 +2,9 @@ var promotionlist = [];
 var mySelect = document.querySelector('#listpromotion');
 var load = document.querySelector("#load");
 
+// I state a new variable that is usefull to retreive the promotion list to screen related student later
+var selectpromostudent = document.querySelector('#studentpromotionlist')
+
 // this function getback the promotionlist and screen them in html
 function getPromotion() {
     // I retreive the list promotion by a fetch method
@@ -21,13 +24,14 @@ function getPromotion() {
                 // now I state a value = promotion.id in order to select the right idpromotion into the select to carry out some opération 
                 myOption.value = promotion.id
                 mySelect.appendChild(myOption);
+                
             })
 
-console.log(promotionresponse['hydra:member'])
+            console.log(promotionresponse['hydra:member'])
 
-console.log(promotionresponse)
+            console.log(promotionresponse)
         })
-        console.log(promotionlist)
+    console.log(promotionlist)
 }
 
 export default getPromotion
