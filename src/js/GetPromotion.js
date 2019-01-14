@@ -1,5 +1,6 @@
 var promotionlist;
 var mySelect = document.querySelector('.listpromotion');
+var studentcontent = document.querySelector('#studentcontent');
 var load = document.querySelector("#load");
 var studentlist
 var btnstudentscreen = document.querySelector('.Btnstudentscreen')
@@ -58,8 +59,31 @@ function studentscreen(event) {
     studentlist.forEach(student => {
         if (student.promotion == screenstudent.id) {
             console.log(student.firstname)
+       
+        var card = document.createElement('div')
+        card.className = 'card w-50' 
+        studentcontent.appendChild(card)  
+        var cardbody = document.createElement('div')
+        cardbody.className = 'card-body'
+        card.appendChild(cardbody)
+        var h5 = document.createElement('h5')
+        h5.className = "card-title"
+        h5.innerHTML = student.firstname + student.lastname
+        cardbody.appendChild(h5)
+        var birthdate = document.createElement('h5')
+        card.appendChild(birthdate)
+        var buttondeletestudent = document.createElement('button')
+        cardbody.appendChild(buttondeletestudent)
+        buttondeletestudent.className= 'btn btn-primary'
+        buttondeletestudent.innerHTML = "Supprimer l'étudiant"
+        var buttonalterstudent = document.createElement('button')
+        cardbody.appendChild(buttonalterstudent)
+        buttonalterstudent.className= 'btn btn-primary'
+        buttonalterstudent.innerHTML = "modifier l'étudiant"
+       
         }
 
+       
     })
 
 
