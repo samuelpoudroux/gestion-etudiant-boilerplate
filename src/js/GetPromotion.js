@@ -19,7 +19,24 @@ function getPromotion() {
             promotionlist = promotionresponse['hydra:member'];
             load.innerHTML = '';
             promotionlist.forEach(promotion => {
-                load.innerHTML += promotion.id + ". " + promotion.name + "<br>";
+                var card = document.createElement('div')
+                card.className = 'card'
+                load.appendChild(card)
+                var cardbody = document.createElement('div')
+                cardbody.className = 'card-body'
+                card.appendChild(cardbody)
+                var h5 = document.createElement('h5')
+                h5.className = "card-title"
+                h5.innerHTML = promotion.id + " " + promotion.name
+                cardbody.appendChild(h5)
+                var startdate = document.createElement('h5')
+                var enddate = document.createElement('h5')
+                card.appendChild(startdate)
+                card.appendChild(enddate)
+                startdate.innerHTML = 'Date de début:' + (promotion.startDate) + "<br>"
+                enddate.innerHTML = 'date de fin:' + promotion.endDate
+               
+                // load.innerHTML += promotion.id + ". " + promotion.name + "<br>";
                 // Now lets go to add this list into the selectlist     
                 var myOption = document.createElement('option');
                 myOption.innerHTML = promotion.name;
@@ -55,40 +72,39 @@ function studentscreen(event) {
     // its always the same i GIVE A ID to my button that is equal to mySelect.value in order to link my event with the nameselected
     btnstudentscreen.id = mySelect.value
     var screenstudent = event.target
-
+    studentcontent.innerHTML = ""
     studentlist.forEach(student => {
         if (student.promotion == screenstudent.id) {
             console.log(student.firstname)
-       
-        var card = document.createElement('div')
-        card.className = 'card w-50' 
-        studentcontent.appendChild(card)  
-        var cardbody = document.createElement('div')
-        cardbody.className = 'card-body'
-        card.appendChild(cardbody)
-        var h5 = document.createElement('h5')
-        h5.className = "card-title"
-        h5.innerHTML = student.firstname + student.lastname
-        cardbody.appendChild(h5)
-        var birthdate = document.createElement('h5')
-        card.appendChild(birthdate)
-        var buttondeletestudent = document.createElement('button')
-        cardbody.appendChild(buttondeletestudent)
-        buttondeletestudent.className= 'btn btn-primary'
-        buttondeletestudent.innerHTML = "Supprimer l'étudiant"
-        var buttonalterstudent = document.createElement('button')
-        cardbody.appendChild(buttonalterstudent)
-        buttonalterstudent.className= 'btn btn-primary'
-        buttonalterstudent.innerHTML = "modifier l'étudiant"
-       
+            
+            var card = document.createElement('div')
+            card.className = 'card w-50'
+            studentcontent.appendChild(card)
+            var cardbody = document.createElement('div')
+            cardbody.className = 'card-body'
+            card.appendChild(cardbody)
+            var h5 = document.createElement('h5')
+            h5.className = "card-title"
+            h5.innerHTML = student.firstname + student.lastname
+            cardbody.appendChild(h5)
+            var buttondeletestudent = document.createElement('button')
+            cardbody.appendChild(buttondeletestudent)
+            buttondeletestudent.className = 'btn btn-primary'
+            buttondeletestudent.innerHTML = "Supprimer l'étudiant"
+            var buttonalterstudent = document.createElement('button')
+            cardbody.appendChild(buttonalterstudent)
+            buttonalterstudent.className = 'btn btn-primary'
+            buttonalterstudent.innerHTML = "modifier l'étudiant"
+
         }
 
-       
+
     })
 
 
 }
 
 export default getPromotion;
-export {getstudents
+export {
+    getstudents
 }

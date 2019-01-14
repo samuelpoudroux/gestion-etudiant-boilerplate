@@ -1,3 +1,25 @@
 body {
-    background-color: pink;
+    background-color: white;
+}
+
+.card{
+    width: 32%;
+    margin-top: 20px;
+    border: 1px solid black;
+}
+
+h5{
+    color:black;
+}
+
+#load{
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    justify-content: space-around;   
+    justify-items: space-between;
+}
+
+.contentinputbutton{
+    margin-top: 50px;
 }
