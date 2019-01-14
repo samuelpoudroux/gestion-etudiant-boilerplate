@@ -23,3 +23,11 @@ h5{
 .contentinputbutton{
     margin-top: 50px;
 }
+
+#studentcontent{
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    justify-content: space-around;   
+    justify-items: space-between;
+}

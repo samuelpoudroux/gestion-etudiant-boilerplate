@@ -5,6 +5,7 @@ import confirmdeletePromotion from './confirmanddeletepromotion.js'
 import confirmalterpromotion from './confirmandalterpromotion.js'
 import {getstudents} from './GetPromotion.js'
 
+
 // I build an array to stock my jsondata of promotion
 
 // I state my require variables to create a promotion
