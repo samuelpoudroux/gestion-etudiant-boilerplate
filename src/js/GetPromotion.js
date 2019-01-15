@@ -1,4 +1,5 @@
 import confirmdeletestudent from './confirmanddeletestudent.js'
+import confirmalterstudent from './ confirmandalterstudents.js';
 
 var promotionlist;
 var mySelect = document.querySelector('.listpromotion');
@@ -86,19 +87,30 @@ function studentscreen(event) {
 
             var card = document.createElement('div')
             card.className = 'card'
+            card.id=student.id
             studentcontent.appendChild(card)
             var cardbody = document.createElement('div')
             cardbody.className = 'card-body'
             card.appendChild(cardbody)
             var h5 = document.createElement('h5')
             h5.className = "card-title"
-            h5.innerHTML = student.firstname + student.lastname
+            h5.innerHTML = `${student.firstname}  ${student.lastname}`
             cardbody.appendChild(h5)
+            var alterfirstnamestudent = document.createElement('input');
+            alterfirstnamestudent.id = 'alterfirstname';
+            // alterfirstnamestudent.dataset.id= student['@id']
+            var altersurnamestudent = document.createElement('input');
+            altersurnamestudent.id = 'altersurname';
+            // altersurnamestudent.dataset.id= student['@id']
+            alterfirstnamestudent.placeholder = 'nouveau prénom de l étudiant'
+            altersurnamestudent.placeholder = 'nouveau nom de l étudiant'
+            card.appendChild(alterfirstnamestudent)
+            card.appendChild(altersurnamestudent)
             var buttondeletestudent = document.createElement('button')
             // I add an id to each butoon that is equal to the student['@id'] tu use it later by selectin the button id in the addrress fetch
             buttondeletestudent.id = student['@id']
             // I add a class to the utton to select hum in my function confirm andstudentdelet
-            buttondeletestudent.class = ('.btn')
+           
             buttondeletestudent.addEventListener("click", confirmdeletestudent)
 
             cardbody.appendChild(buttondeletestudent)
@@ -106,12 +118,12 @@ function studentscreen(event) {
             buttondeletestudent.innerHTML = "Supprimer l'étudiant"
             var buttonalterstudent = document.createElement('button')
             cardbody.appendChild(buttonalterstudent)
-            buttonalterstudent.className = 'btn btn-primary'
+            buttonalterstudent.className = 'btn btn-primary btnalterstudent'
             buttonalterstudent.innerHTML = "modifier l'étudiant"
-
+            buttonalterstudent.addEventListener('click', confirmalterstudent)
+            buttonalterstudent.id = student['@id']
+        
         }
-
-
     })
 
 

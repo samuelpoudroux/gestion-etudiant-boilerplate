@@ -31,3 +31,7 @@ h5{
     justify-content: space-around;   
     justify-items: space-between;
 }
+
+#altersurname{
+    border: 2px;
+}
