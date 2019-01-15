@@ -1,5 +1,5 @@
 import {getstudents} from './GetPromotion.js';
-var btnalterstudent = document.querySelector(".btnalterstudent")
+var btnalterstudent = document.querySelector(('button[data-id=student.id]'))
 
 // this function will ask to confirm if we want to alter the promotion and if there would be ok Call the function alterpromotion taht is goig to modiy the promotion
 function confirmalterstudent(event) {
@@ -14,11 +14,11 @@ function confirmalterstudent(event) {
 }
 
 function alterstudent(event) {
-    btnalterstudent = event.target
+    btnalterstudent = event.target.dataset.id
     var alterfirstnamestudent = document.querySelector('#alterfirstname');
     var altersurnamestudent = document.querySelector('#altersurname');
 
-    fetch("http://api-students.popschool-lens.fr" + btnalterstudent.id, {
+    fetch("http://api-students.popschool-lens.fr/students/" + btnalterstudent, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
