@@ -7,15 +7,20 @@ var studentcontent = document.querySelector('#studentcontent');
 var load = document.querySelector("#load");
 var studentlist
 var btnstudentscreen = document.querySelector('.Btnstudentscreen')
+var selectaddstudent = document.querySelector('#addstudentselect')
 
 btnstudentscreen.addEventListener("click", studentscreen)
 
 // this function getback the promotionlist and screen them in html
 function getPromotion() {
-// i EMPTY THE MYSELECT IN ORDER TO REFRESH THE LISTPROMOTIONDATEOPTION INTO THE OPTION TO AVOID THE DOUBLE
+    // i EMPTY THE MYSELECT IN ORDER TO REFRESH THE LISTPROMOTIONDATEOPTION INTO THE OPTION TO AVOID THE DOUBLE
     mySelect.innerHTML = ""
+    selectaddstudent.innerHTML = ""
+    var option = document.createElement('option')
+    mySelect.appendChild(option)
+    option.innerHTML = "choississez la promotion"
     // I retreive the list promotion by a fetch method
-    
+
     fetch("http://api-students.popschool-lens.fr/api/promotions")
         // we get back the responson within json format
         .then(response => response.json())
@@ -45,7 +50,11 @@ function getPromotion() {
                 myOption.innerHTML = promotion.name;
                 // now I state a value = promotion['@id'] in order to select the right idpromotion into the select to carry out some opération 
                 myOption.value = promotion["@id"]
+                var myOption2 = document.createElement('option')
                 mySelect.appendChild(myOption);
+                selectaddstudent.appendChild(myOption2)
+                myOption2.value = promotion["@id"]
+                myOption2.innerHTML = promotion.name;
 
 
             })
@@ -87,7 +96,7 @@ function studentscreen(event) {
 
             var card = document.createElement('div')
             card.className = 'card'
-            card.id=student.id
+            card.id = student.id
             studentcontent.appendChild(card)
             var cardbody = document.createElement('div')
             cardbody.className = 'card-body'
@@ -98,9 +107,13 @@ function studentscreen(event) {
             cardbody.appendChild(h5)
             var alterfirstnamestudent = document.createElement('input');
             alterfirstnamestudent.id = 'alterfirstname';
+            // alterfirstnamestudent.dataset.id = student['@id']
+
             // alterfirstnamestudent.dataset.id= student['@id']
             var altersurnamestudent = document.createElement('input');
             altersurnamestudent.id = 'altersurname';
+            // alterfirstnamestudent.dataset.id =student['@id']
+            
             // altersurnamestudent.dataset.id= student['@id']
             alterfirstnamestudent.placeholder = 'nouveau prénom de l étudiant'
             altersurnamestudent.placeholder = 'nouveau nom de l étudiant'
@@ -110,7 +123,7 @@ function studentscreen(event) {
             // I add an id to each butoon that is equal to the student['@id'] tu use it later by selectin the button id in the addrress fetch
             buttondeletestudent.id = student['@id']
             // I add a class to the utton to select hum in my function confirm andstudentdelet
-           
+
             buttondeletestudent.addEventListener("click", confirmdeletestudent)
 
             cardbody.appendChild(buttondeletestudent)
@@ -122,7 +135,7 @@ function studentscreen(event) {
             buttonalterstudent.innerHTML = "modifier l'étudiant"
             buttonalterstudent.addEventListener('click', confirmalterstudent)
             buttonalterstudent.id = student['@id']
-        
+
         }
     })
 

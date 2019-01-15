@@ -19,7 +19,7 @@
        <button id="BtnCreatePromo">creer</button>
      
      <select name="liste des promotion" class="listpromotion">
-         <option>Choisissez une promotion</option>
+         <option id= "optionselect">Choisissez une promotion</option>
      </select>
      <button id="BtnAlterPromo">modifier</button>
      <button id="BtndeletePromo">effacer</button>
@@ -31,8 +31,20 @@
 </div>
 
 <div id ="studentcontent">
-
+       
 </div>
+<div class="card w-50">
+        <div class="card-body">
+          <h5 class="card-title">J'ajoute un étudiant</h5>
+          <input type="text" class="addstudentfirstname">
+          <input type="text" class="addstudentlastname">
+          <select name="promo étudiant" aria-placeholder="nom" id="addstudentselect">
+
+            <option value="">Affecter la promotion de l'étudiant</option>
+          </select>
+          <a href="#" class="btn btn-primary">Ajouter l'étudiant</a>
+        </div>
+      </div>
 </div>
      </body>
      </html>
