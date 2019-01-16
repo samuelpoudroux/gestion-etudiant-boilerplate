@@ -1,12 +1,10 @@
 import {getstudents} from './studentscreen.js'
 
-
 var selectaddstudent = document.querySelector('#addstudentselect')
 var inputaddstudentfirstname = document.querySelector('.addstudentfirstname')
 var inputaddstudentlastname = document.querySelector('.addstudentlastname')
 var inputaddstudentbd = document.querySelector('.addstudentbd')
 var btnaddstudent = document.querySelector('.btnaddstudent')
-
 
 // this function allows us to add students with by sleecting the right promotion
 function addstudent(event) {

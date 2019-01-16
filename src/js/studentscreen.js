@@ -1,4 +1,3 @@
-
 import confirmdeletestudent from  './confirmanddeletestudent.js'
 import confirmalterstudent from  './confirmandalterstudents.js'
 
@@ -7,7 +6,6 @@ var studentcontent = document.querySelector('#studentcontent');
  var studentlist;
 var btnstudentscreen = document.querySelector('.Btnstudentscreen')
 // this function is going to screen the student related to the promotion selected
-
 
 // THIS FUNCTION JUST GET BACK THE STUDENT LIST BY FECTCH AND STORE IT IN THE STUDENTLISTVARIABLE
 function getstudents() {
@@ -24,7 +22,6 @@ function getstudents() {
         })
 
 }
-
 
 function studentscreen() {
 
