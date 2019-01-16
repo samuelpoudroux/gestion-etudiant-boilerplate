@@ -8,13 +8,11 @@ var load = document.querySelector("#load");
 var studentlist
 var btnstudentscreen = document.querySelector('.Btnstudentscreen')
 var selectaddstudent = document.querySelector('#addstudentselect')
-
-
 var inputaddstudentfirstname = document.querySelector('.addstudentfirstname')
 var inputaddstudentlastname = document.querySelector('.addstudentlastname')
-var btnaddstudent = document.querySelector('#btnaaddstudent')
-var btnaddbd = document.querySelector('.addstudentbd')
-btnaddstudent.id = selectaddstudent.value
+var inputaddstudentbd = document.querySelector('.addstudentbd')
+var btnaddstudent = document.querySelector('.btnaddstudent')
+
 btnstudentscreen.addEventListener("click", studentscreen)
 btnaddstudent.addEventListener('click', addstudent)
 
@@ -59,10 +57,11 @@ function getPromotion() {
                 myOption.value = promotion["@id"]
                 var myOption2 = document.createElement('option')
                 mySelect.appendChild(myOption);
-                selectaddstudent.appendChild(myOption2)
-                myOption2.value = promotion["@id"]
                 myOption2.innerHTML = promotion.name;
+                myOption2.value = promotion["@id"]
+                selectaddstudent.appendChild(myOption2)
 
+                console.log(btnaddstudent.id)
 
             })
             console.log(promotionresponse['hydra:member'])
@@ -87,7 +86,7 @@ function getstudents() {
 }
 
 // this function is going to screen the student related to the promotion selected
-function studentscreen(event) {
+function studentscreen() {
 
     // its always the same i GIVE A ID to my button that is equal to mySelect.value in order to link my event with the nameselected
     btnstudentscreen.id = mySelect.value
@@ -108,12 +107,12 @@ function studentscreen(event) {
             h5.innerHTML = `${student.firstname}  ${student.lastname}`
             cardbody.appendChild(h5)
             var alterfirstnamestudent = document.createElement('input');
-            alterfirstnamestudent.id = 'alterfirstname';
+            alterfirstnamestudent.id = 'alterfirstname' + student.id;
             alterfirstnamestudent.setAttribute('data-id', student.id);
             // alterfirstnamestudent.dataset.id = student.id
 
             var altersurnamestudent = document.createElement('input');
-            altersurnamestudent.id = 'altersurname';
+            altersurnamestudent.id = 'altersurname' + student.id;
             altersurnamestudent.setAttribute('data-id', student.id);
             // altersurnamestudent.dataset.id =student.id
 
@@ -136,7 +135,6 @@ function studentscreen(event) {
             buttonalterstudent.className = 'btn btn-primary btnalterstudent'
             buttonalterstudent.innerHTML = "modifier l'étudiant"
             buttonalterstudent.addEventListener('click', confirmalterstudent)
-            buttonalterstudent.setAttribute('data-id', student.id)
             buttonalterstudent.id = student.id
 
         }
@@ -145,28 +143,31 @@ function studentscreen(event) {
 
 }
 
+// this function allows us to add students with by sleecting the right promotion
 function addstudent(event) {
+    // the the same i add an id to the btnaddstudent to select him using the event and to push the date to the jsonobject promotionitems
+    btnaddstudent.id = selectaddstudent.value
 
-    var btnaddstud = event.target
+    var btn = event.target
     fetch('http://api-students.popschool-lens.fr/api/students', {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            method: "PUT",
+            method: "POST",
 
             body: JSON.stringify({
                 firstname: inputaddstudentfirstname.value,
                 lastname: inputaddstudentlastname.value,
                 sex: 0,
-                birthdate: btnaddbd.value,
-                promotion: btnaddstud.id,
-              })
+                birthdate: inputaddstudentbd.value,
+                promotion: btn.id,
+            })
         })
         .then(response => response.json())
         .then(studentresponse => {
-            console.log(studentresponse + " modifié")
-
+            console.log(studentresponse)
+            //  I call back the function get student to refresh the student data
             getstudents()
         })
 

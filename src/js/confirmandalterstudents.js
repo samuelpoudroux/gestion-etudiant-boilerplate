@@ -14,13 +14,13 @@ function confirmalterstudent(event) {
 }
 
 function alterstudent(event) {
-    btnalterstudent = event.target.dataset.id
+    btnalterstudent = event.target
         // var alterfirstnamestudent = document.querySelector((input'[data-id=student.id]'));
     var altersurnamestudent = document.querySelector('#altersurname');
     var alterfirstnamestudent = document.querySelector('#alterfirstrname');
 
 
-    fetch("http://api-students.popschool-lens.fr/students/" + btnalterstudent.id, {
+    fetch("http://api-students.popschool-lens.fr" + btnalterstudent.id, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
