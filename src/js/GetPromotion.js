@@ -106,11 +106,13 @@ function studentscreen(event) {
             cardbody.appendChild(h5)
             var alterfirstnamestudent = document.createElement('input');
             alterfirstnamestudent.id = 'alterfirstname';
-            alterfirstnamestudent.dataset.id = student.id
+            alterfirstnamestudent.setAttribute('data-id', student.id);
+            // alterfirstnamestudent.dataset.id = student.id
 
             var altersurnamestudent = document.createElement('input');
             altersurnamestudent.id = 'altersurname';
-            altersurnamestudent.dataset.id =student.id
+            altersurnamestudent.setAttribute('data-id', student.id);
+            // altersurnamestudent.dataset.id =student.id
             
             alterfirstnamestudent.placeholder = 'nouveau prénom de l étudiant'
             altersurnamestudent.placeholder = 'nouveau nom de l étudiant'
@@ -118,7 +120,7 @@ function studentscreen(event) {
             card.appendChild(altersurnamestudent)
             var buttondeletestudent = document.createElement('button')
             // I add an id to each butoon that is equal to the student['@id'] tu use it later by selectin the button id in the addrress fetch
-            buttondeletestudent.dataset.id = student['@id']
+            buttondeletestudent.id = student['@id']
             // I add a class to the utton to select hum in my function confirm andstudentdelet
 
             buttondeletestudent.addEventListener("click", confirmdeletestudent)
@@ -131,8 +133,9 @@ function studentscreen(event) {
             buttonalterstudent.className = 'btn btn-primary btnalterstudent'
             buttonalterstudent.innerHTML = "modifier l'étudiant"
             buttonalterstudent.addEventListener('click', confirmalterstudent)
-            buttonalterstudent.dataset.id = student.id
-
+            buttonalterstudent.setAttribute('data-id', student.id)
+            buttonalterstudent.id = student.id
+        
         }
     })
 
