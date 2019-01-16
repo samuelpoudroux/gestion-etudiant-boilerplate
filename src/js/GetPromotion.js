@@ -1,5 +1,5 @@
 import confirmdeletestudent from './confirmanddeletestudent.js'
-import confirmalterstudent from './ confirmandalterstudents.js';
+import confirmalterstudent from './confirmandalterstudents.js';
 
 var promotionlist;
 var mySelect = document.querySelector('.listpromotion');
@@ -9,7 +9,14 @@ var studentlist
 var btnstudentscreen = document.querySelector('.Btnstudentscreen')
 var selectaddstudent = document.querySelector('#addstudentselect')
 
+
+var inputaddstudentfirstname = document.querySelector('.addstudentfirstname')
+var inputaddstudentlastname = document.querySelector('.addstudentlastname')
+var btnaddstudent = document.querySelector('#btnaaddstudent')
+var btnaddbd = document.querySelector('.addstudentbd')
+btnaddstudent.id = selectaddstudent.value
 btnstudentscreen.addEventListener("click", studentscreen)
+btnaddstudent.addEventListener('click', addstudent)
 
 // this function getback the promotionlist and screen them in html
 function getPromotion() {
@@ -58,11 +65,7 @@ function getPromotion() {
 
 
             })
-
-
-
             console.log(promotionresponse['hydra:member'])
-
             console.log(promotionlist)
         })
 }
@@ -87,7 +90,7 @@ function getstudents() {
 function studentscreen(event) {
 
     // its always the same i GIVE A ID to my button that is equal to mySelect.value in order to link my event with the nameselected
-    // btnstudentscreen.id = mySelect.value
+    btnstudentscreen.id = mySelect.value
     // var screenstudent = event.target
     studentcontent.innerHTML = ""
     studentlist.forEach(student => {
@@ -113,7 +116,7 @@ function studentscreen(event) {
             altersurnamestudent.id = 'altersurname';
             altersurnamestudent.setAttribute('data-id', student.id);
             // altersurnamestudent.dataset.id =student.id
-            
+
             alterfirstnamestudent.placeholder = 'nouveau prénom de l étudiant'
             altersurnamestudent.placeholder = 'nouveau nom de l étudiant'
             card.appendChild(alterfirstnamestudent)
@@ -135,12 +138,40 @@ function studentscreen(event) {
             buttonalterstudent.addEventListener('click', confirmalterstudent)
             buttonalterstudent.setAttribute('data-id', student.id)
             buttonalterstudent.id = student.id
-        
+
         }
     })
 
 
 }
+
+function addstudent(event) {
+
+    var btnaddstud = event.target
+    fetch('http://api-students.popschool-lens.fr/api/students', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "PUT",
+
+            body: JSON.stringify({
+                firstname: inputaddstudentfirstname.value,
+                lastname: inputaddstudentlastname.value,
+                sex: 0,
+                birthdate: btnaddbd.value,
+                promotion: btnaddstud.id,
+              })
+        })
+        .then(response => response.json())
+        .then(studentresponse => {
+            console.log(studentresponse + " modifié")
+
+            getstudents()
+        })
+
+}
+
 
 export default getPromotion;
 export {
