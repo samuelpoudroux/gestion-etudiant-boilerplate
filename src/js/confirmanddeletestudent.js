@@ -1,4 +1,4 @@
-import { getstudents } from "./GetPromotion";
+import {getstudents} from './studentscreen.js'
 
 // Now I m create a function that is going to ask to confirm the removal and call the function delete if that approuved
 function confirmdeletestudent(event){

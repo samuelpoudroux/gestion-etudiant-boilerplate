@@ -3,7 +3,7 @@ import getPromotion from './GetPromotion.js'
 import createPromotion from './CreatePromotion.js'
 import confirmdeletePromotion from './confirmanddeletepromotion.js'
 import confirmalterpromotion from './confirmandalterpromotion.js'
-import {getstudents} from './GetPromotion.js'
+import {getstudents} from './studentscreen.js'
 
 
 // I build an array to stock my jsondata of promotion

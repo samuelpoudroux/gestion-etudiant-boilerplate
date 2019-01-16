@@ -1,4 +1,4 @@
-import {getstudents} from './GetPromotion.js';
+import {getstudents} from './studentscreen.js'
 var btnalterstudent = document.querySelector(('.btnalterstudent'))
 
 // this function will ask to confirm if we want to alter the promotion and if there would be ok Call the function alterpromotion taht is goig to modiy the promotion
