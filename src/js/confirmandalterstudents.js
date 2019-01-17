@@ -14,11 +14,12 @@ function confirmalterstudent(event) {
 }
 
 function alterstudent(event) {
+
+    // now I state my variables and to put a value to student id thait is equal to my btnalterstudent.data.set.id because i m goint to need this value to retreive my suitable input call by the event, as well as the event0.target to get back the end point student @id to put in the right address
     btnalterstudent = event.target
     var studentid = btnalterstudent.dataset.id;
-        // var alterfirstnamestudent = document.querySelector((input'[data-id=student.id]'));
-    var altersurnamestudent = document.querySelector('#altersurname' + studentid);
-    var alterfirstnamestudent = document.querySelector('#alterfirstrname' + studentid);
+    var altersurnamestudent = document.querySelector("#altersurname"+ studentid);
+    var alterfirstnamestudent = document.querySelector("#alterfirstname" + studentid);
 
 
     fetch("http://api-students.popschool-lens.fr" + btnalterstudent.id, {
