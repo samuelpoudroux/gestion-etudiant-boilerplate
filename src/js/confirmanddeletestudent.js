@@ -15,7 +15,7 @@ function confirmdeletestudent(event){
   // this function ask as parameters the promotionid to set the id into the url 
   
   function deleteStudent(studentid) 
-  {
+  { 
           fetch("http://api-students.popschool-lens.fr" + studentid, {
               method: "DELETE"
           })

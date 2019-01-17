@@ -1,26 +1,5 @@
-# BOILRPLATE-WEBPACK
+Cette application a été conçu dans le cadre d'un exercice Javascript qui était requis pour valider mes compétences en JavaScript dans le cadre de ma formation Popschool. 
 
-2018, Loïc Pennequin & Philippe Pary
+L'idée était de créer une interface dynamique qui grace à l'utilisation d'une api, je puisse modifier supprimer ou ajouter un étudiant ou également une promotion. 
 
-Environnement de développement simplifié pour les étudiants de Pop School Lens dans le cadre de l'apprentissage de webpack.
-
-## Installation
-
-`npm install` pour lancer l’installation des dépendances
-
-puis
-
-`rm -Rf .git` pour remettre à zéro la gestion par git
-
-puis modifier ce fichier README.md 😀
-
-## Commandes
-
-`npm run dev` : lance le serveur de développement et ouvre votre site dans le navigateur
-
-`npm run build` : construit votre site dans le dossier dist
-
-## TODO
-
-[] ESLint config
-[] Units tests (Jasmine, Jext …)
+Vous l'aurez compris, l'idée  est que chaque personne qui ajoute un étudiant ou une promotion, je n'ai pas besoin de rentrer ds le code pour l'ajouter, toute ma liste se met à jour à la volée en créant mes cards à la volée.
