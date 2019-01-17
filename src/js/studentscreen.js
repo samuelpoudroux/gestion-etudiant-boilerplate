@@ -45,12 +45,10 @@ function studentscreen() {
             cardbody.appendChild(h5)
             var alterfirstnamestudent = document.createElement('input');
             alterfirstnamestudent.id = 'alterfirstname' + student.id;
-            alterfirstnamestudent.setAttribute('data-id', student.id);
             // alterfirstnamestudent.dataset.id = student.id
 
             var altersurnamestudent = document.createElement('input');
             altersurnamestudent.id = 'altersurname' + student.id;
-            altersurnamestudent.setAttribute('data-id', student.id);
             // altersurnamestudent.dataset.id =student.id
 
             alterfirstnamestudent.placeholder = 'nouveau prénom de l étudiant'
@@ -72,7 +70,8 @@ function studentscreen() {
             buttonalterstudent.className = 'btn btn-primary btnalterstudent'
             buttonalterstudent.innerHTML = "modifier l'étudiant"
             buttonalterstudent.addEventListener('click', confirmalterstudent)
-            buttonalterstudent.id = student.id
+            buttonalterstudent.id = student['@id']
+            buttonalterstudent.dataset.id = student.id
 
         }
     })

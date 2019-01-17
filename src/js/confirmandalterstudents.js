@@ -15,9 +15,10 @@ function confirmalterstudent(event) {
 
 function alterstudent(event) {
     btnalterstudent = event.target
+    var studentid = btnalterstudent.dataset.id;
         // var alterfirstnamestudent = document.querySelector((input'[data-id=student.id]'));
-    var altersurnamestudent = document.querySelector('#altersurname');
-    var alterfirstnamestudent = document.querySelector('#alterfirstrname');
+    var altersurnamestudent = document.querySelector('#altersurname' + studentid);
+    var alterfirstnamestudent = document.querySelector('#alterfirstrname' + studentid);
 
 
     fetch("http://api-students.popschool-lens.fr" + btnalterstudent.id, {
